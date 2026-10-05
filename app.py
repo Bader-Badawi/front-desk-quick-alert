@@ -28,15 +28,19 @@ def parse_note_rules(raw_text: str) -> Dict[str, Any]:
     if is_delivery:
         # Carrier extraction
         carrier_match = re.search(
-            r'\b(Aramex|DHL|FedEx|UPS|Amazon|Careem|Fetchr|Courier)\b',
+            r'\b(Aramex|DHL|FedEx|UPS|Amazon|Careem|Fetchr|Courier|Post)\b',
             text,
             re.IGNORECASE
         )
-        data["carrier"] = carrier_match.group(1).title() if carrier_match else "Courier"
+        if carrier_match:
+            c = carrier_match.group(1)
+            data["carrier"] = c.upper() if c.upper() in ["DHL", "UPS"] else c.title()
+        else:
+            data["carrier"] = "Courier"
 
         # Tracking number
         track_match = re.search(
-            r'(?:tracking|track|awb)\s*(?:#|no\.?|number)?\s*([A-Za-z0-9\-]+)',
+            r'(?:tracking|track|awb)\s*(?:#|no\.?|number)?\s*([A-Za-z0-9\-_]+)',
             text,
             re.IGNORECASE
         )
@@ -65,15 +69,15 @@ def parse_note_rules(raw_text: str) -> Dict[str, Any]:
             data["item"] = "Parcel / Document Package"
 
     else:
-        # Visitor name and company
+        # Visitor name and company (support hyphens, ampersands, dots e.g. Dar Al-Handasah, CCC & Co.)
         visitor_company_match = re.search(
-            r'([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\s+from\s+([A-Za-z0-9\s&]+?)(?:\s+is here|\s+arrived|\s+to see|\s+waiting|$)',
+            r'([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\s+from\s+([A-Za-z0-9\s&\.\-]+?)(?:\s+is here|\s+arrived|\s+to see|\s+waiting|$)',
             text,
             re.IGNORECASE
         )
         if visitor_company_match:
             data["visitor"] = visitor_company_match.group(1).title()
-            data["company"] = visitor_company_match.group(2).strip().title()
+            data["company"] = visitor_company_match.group(2).strip()
         else:
             v_match = re.search(r'^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)', text)
             data["visitor"] = v_match.group(1).title() if v_match else "Visitor"
@@ -238,10 +242,11 @@ def main():
 
     # Sidebar settings
     with st.sidebar:
-        st.header("⚙️ Configuration")
-        st.info("⚡ **Running in Deterministic NLP Mode**\n\n100% offline uptime with zero API key dependencies.")
+        st.header("⚙️ System Status")
+        st.success("🟢 **Engine:** Deterministic NLP")
+        st.info("100% offline uptime with zero API key dependencies.")
         st.markdown("---")
-        st.caption("Front-Desk Quick-Alert v1.0.0\nAuthor: Bader Badawi")
+        st.caption("Front-Desk Quick-Alert v1.0.0\nAuthor: Bader Badawi\nSubmission for CMA Assessment")
 
     st.markdown('<div class="main-header">🛎️ Front-Desk Quick-Alert</div>', unsafe_allow_html=True)
     st.markdown('<div class="sub-caption">Convert raw visitor or delivery arrivals into instant host notifications and reception actions.</div>', unsafe_allow_html=True)
