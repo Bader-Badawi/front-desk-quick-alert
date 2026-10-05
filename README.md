@@ -1,6 +1,9 @@
 # 🛎️ Front-Desk Quick-Alert
 *(Visitor & Delivery Notification Generator)*
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://front-desk-quick-alert-2kzyncqvxhrqcdgkx6dcrf.streamlit.app/)
+**🚀 Live Demo:** [https://front-desk-quick-alert-2kzyncqvxhrqcdgkx6dcrf.streamlit.app/](https://front-desk-quick-alert-2kzyncqvxhrqcdgkx6dcrf.streamlit.app/)
+
 A lightweight, zero-latency micro-app that turns informal receptionist notes into structured, instant host notifications and front-desk operating checklists.
 
 ---
@@ -76,7 +79,7 @@ The app instantly generates:
    * Main file path: `app.py`.
    * Click **"Deploy"**.
 3. **Get Your Live URL:**
-   * Streamlit will build and launch your live application (e.g., `https://front-desk-quick-alert.streamlit.app`).
+   * Streamlit will build and launch your live application: [https://front-desk-quick-alert-2kzyncqvxhrqcdgkx6dcrf.streamlit.app/](https://front-desk-quick-alert-2kzyncqvxhrqcdgkx6dcrf.streamlit.app/).
 
 ---
 
@@ -89,7 +92,7 @@ Dear Saad,
 
 Here is the link to my project for the assessment:
 
-App Link: [Your Streamlit URL]
+App Link: https://front-desk-quick-alert-2kzyncqvxhrqcdgkx6dcrf.streamlit.app/
 Repository: https://github.com/Bader-Badawi/front-desk-quick-alert
 
 1. The Problem:
