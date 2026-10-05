@@ -67,7 +67,7 @@ The app instantly generates:
    git add .
    git commit -m "Initial commit: Front-Desk Quick-Alert"
    git branch -M main
-   git remote add origin https://github.com/<your-username>/front-desk-quick-alert.git
+   git remote add origin https://github.com/Bader-Badawi/front-desk-quick-alert.git
    git push -u origin main
    ```
 2. **Deploy on Streamlit Cloud:**
@@ -76,7 +76,7 @@ The app instantly generates:
    * Main file path: `app.py`.
    * Click **"Deploy"**.
 3. **Get Your Live URL:**
-   * Streamlit will build and launch your live application (e.g., `https://cma-quick-alert.streamlit.app`).
+   * Streamlit will build and launch your live application (e.g., `https://front-desk-quick-alert.streamlit.app`).
 
 ---
 
@@ -90,7 +90,7 @@ Dear Saad,
 Here is the link to my project for the assessment:
 
 App Link: [Your Streamlit URL]
-Repository: [Your GitHub URL]
+Repository: https://github.com/Bader-Badawi/front-desk-quick-alert
 
 1. The Problem:
 When visitors or urgent packages arrive at reception, front-desk operators spend unnecessary time drafting ad-hoc messages to hosts across WhatsApp or Slack, often omitting crucial context or delaying guest hospitality.
